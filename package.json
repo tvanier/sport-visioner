@@ -4,17 +4,25 @@
   "description": "A sample application based on the Decathlon Sport Vision API",
   "author": "Thomas Vanier <thomas.vanier@gmail.com>",
   "scripts": {
+    "lint": "standard src *.js",
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview"
   },
   "devDependencies": {
+    "eslint": "7.19.0",
     "rollup-plugin-svelte": "7.1.0",
+    "standard": "16.0.3",
     "svelte": "3.32.0",
     "svelte-select": "3.16.1",
     "vite": "2.0.0-beta.65"
   },
   "dependencies": {
     "@vtmn/css": "0.1.3"
+  },
+  "standard": {
+    "globals": [
+      "fetch"
+    ]
   }
 }

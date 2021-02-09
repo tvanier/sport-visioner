@@ -1,32 +1,37 @@
 <script>
-  import { createEventDispatcher } from 'svelte'
-  import Select from 'svelte-select'
-  import { getSports } from '../api'
+  import { createEventDispatcher } from 'svelte';
+  import Select from 'svelte-select';
+  import { getSports } from '../api';
 
-  const dispatch = createEventDispatcher()
+  const dispatch = createEventDispatcher();
 
-  export let placeholder = 'Select a sport'
-  let sports = []
+  export let placeholder = 'Select a sport';
+  let sports = [];
 
   getSports().then(({ data }) => {
-    console.log(`found ${data.length} sports`)
+    console.log(`found ${data.length} sports`);
 
     sports = data
-      .map(d => ({
+      .map((d) => ({
         value: d.id,
-        label: d.attributes.name || ''
+        label: d.attributes.name || '',
       }))
       .sort((sport1, sport2) => {
-        return sport1.label < sport2.label ? -1 : 1
-      })
-  })
+        return sport1.label < sport2.label ? -1 : 1;
+      });
+  });
 
   function onSelect(evt) {
-    const { value: id, label: name } = evt.detail
-    const selectedSport = { id, name }
-    dispatch('select', selectedSport)
+    const { value: id, label: name } = evt.detail;
+    const selectedSport = { id, name };
+    dispatch('select', selectedSport);
   }
 </script>
 
-<Select containerClasses="sports-select" items={sports} placeholder={placeholder}
-  on:select={onSelect} on:clear />
+<Select
+  containerClasses="sports-select"
+  items={sports}
+  {placeholder}
+  on:select={onSelect}
+  on:clear
+/>

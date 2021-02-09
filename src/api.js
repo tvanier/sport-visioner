@@ -1,5 +1,6 @@
+/* global FormData */
 
-const baseUrl = `https://sport-vision-api.decathlon.com/v2`
+const baseUrl = 'https://sport-vision-api.decathlon.com/v2'
 
 const apiKey = `${import.meta.env.VITE_DECATHLON_API_KEY}`
 
@@ -19,7 +20,7 @@ export const classifySport = async (imageFile) => {
     method: 'POST',
     headers: {
       Accept: 'application/json',
-      Authorization: apiKey,
+      Authorization: apiKey
     },
     body: formData
   }
