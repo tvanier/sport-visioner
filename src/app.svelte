@@ -5,20 +5,28 @@
   import SportsSelect from './components/sports-select.svelte';
   import SportsPrediction from './components/sports-prediction.svelte';
   import { classifySport } from './api';
-  import { createImageSource } from './utils';
+  import { createImageSource, resizeImage } from './utils';
 
   let buttonRef;
 
   let imageFile;
+  let imageBlob;
   let imageSrc;
   $: if (imageFile) {
     createImageSource(imageFile)
-      .then((data) => (imageSrc = data))
+      .then(resizeImage)
+      .then(({ dataURL, blob }) => {
+        imageSrc = dataURL
+        imageBlob = blob
+      })
       .then(() => tick()) // allow SportsSelect to render
       .then(() => {
         const selectInput = document.querySelector('.sports-select input');
         selectInput?.focus();
-      });
+      })
+      .catch((error) => {
+        console.log('cannot create image source', error);
+      })
   }
 
   let expectedSport;
@@ -34,7 +42,7 @@
     predicting = true;
     try {
       prediction = null;
-      const { data } = await classifySport(imageFile);
+      const { data } = await classifySport(imageBlob);
       prediction = data;
     } finally {
       predicting = false;
