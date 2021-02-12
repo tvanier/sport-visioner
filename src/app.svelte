@@ -74,10 +74,3 @@
 {#if prediction}
   <SportsPrediction {prediction} expected={expectedSport} />
 {/if}
-
-<!--<style>
-  .sports-autocomplete {
-    max-width: 200px;
-    margin: 5px;
-  }
-</style>-->

@@ -21,9 +21,18 @@ VITE_DECATHLON_API_KEY=abcd1234
 Available npm commands:
 - `npm run dev` to run a local dev server
 - `npm run serve` to run bundled locally
+- `npm run test` to run unit tests
+- `npm run test:watch` to run unit tests in watch mode
 - `npm run build` to bundle for production
 
 ## Testing
-Coming soon ;-)
+Unit tests are written with [Testing Library](https://testing-library.com/) and [Jest](https://jestjs.io/).
+
+Jest and JSDOM have some limitations with ESM modules, which can cause compatibility issues with Vite, like [import.meta](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import.meta).<br>
+A possible alternative would be to replace Jest with [Mocha](https://mochajs.org/) and [esm](https://www.npmjs.com/package/esm) and run
+```
+mocha --require esm src/**/*.spec.js
+```
+However, this would need a utility to load Svelte components in Node, such as [svelte-test-register](https://github.com/dirv/svelte-test-register)
 # License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for more information.

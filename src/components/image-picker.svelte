@@ -7,12 +7,8 @@
 
   function onInputChange(event) {
     const fileList = event.target.files;
-    console.log(fileList);
+    const file = fileList[0];
 
-    readImage(fileList[0]);
-  }
-
-  function readImage(file) {
     // Check if the file is an image.
     if (file.type && file.type.indexOf('image') === -1) {
       console.log('File is not an image.', file.type, file);
@@ -28,6 +24,8 @@
 <form>
   <label>
     {label}
-    <input type="file" accept=".jpg, .jpeg, .png" on:change={onInputChange} />
+    <input type="file" accept=".jpg, .jpeg, .png"
+      on:change={onInputChange}
+      data-testid="input" />
   </label>
 </form>

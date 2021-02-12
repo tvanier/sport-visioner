@@ -1,17 +1,15 @@
 <script>
-  export let prediction;
-  export let expected;
+  export let prediction = null;
+  export let expected = null;
 
-  $: predictedSport =
-    prediction?.sport?.length > 0 ? prediction.sport[0] : null;
-  $: predictedProbablity = predictedSport
-    ? (predictedSport.probability * 100).toFixed(2)
-    : 0;
+  const displayProbability = (sport) => ((sport?.probability ?? 0) * 100).toFixed(2)
+
+  $: predictedSport = prediction?.sport?.[0] ?? { name: 'unknown' };
+  $: predictedProbablity = displayProbability(predictedSport)
 
   let message = '';
   $: {
     if (expected) {
-      console.log('prediction', { expected, predicted: predictedSport });
       if (expected.id == predictedSport.id) {
         message = `Correct! This image shows ${predictedSport.name}`;
       } else {
@@ -23,13 +21,13 @@
   }
 </script>
 
-<p>{message}</p>
+<p data-testid="message">{message}</p>
 
-<small>Found {prediction?.sport?.length ?? 0} sports</small>
+<small data-testid="small-text">Found {prediction?.sport?.length ?? 0} sports</small>
 <ul>
-  {#each prediction?.sport as sport}
+  {#each prediction?.sport ?? [] as sport}
     <li>
-      <small>{sport.name} at {(sport.probability * 100).toFixed(2)}%</small>
+      <small>{sport.name} at {displayProbability(sport)}%</small>
     </li>
   {/each}
 </ul>
