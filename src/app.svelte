@@ -63,6 +63,7 @@
 {#if imageSrc}
   <img src={imageSrc} alt="Selected" />
 
+  <p>Optionally, pre-select a sport to try to match the algorithm prediction</p>
   <SportsSelect
     class="sports-select"
     isDisabled={predicting}
