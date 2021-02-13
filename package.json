@@ -24,7 +24,7 @@
     "svelte": "3.32.0",
     "svelte-jester": "1.3.0",
     "svelte-select": "3.16.1",
-    "vite": "2.0.0-beta.65"
+    "vite": "2.0.0-beta.69"
   },
   "dependencies": {
     "@vtmn/css": "0.1.3"
