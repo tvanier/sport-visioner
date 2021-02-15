@@ -16,3 +16,7 @@ header {
 .sports-select {
   max-width: 300px;
 }
+
+.btn-label:hover {
+  cursor: pointer;
+}

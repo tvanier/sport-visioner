@@ -1,13 +1,17 @@
 <script>
   import { tick } from 'svelte';
   import Header from './components/header.svelte';
+  import CameraSnapshot from './components/camera-snapshot.svelte';
   import ImagePicker from './components/image-picker.svelte';
   import SportsSelect from './components/sports-select.svelte';
   import SportsPrediction from './components/sports-prediction.svelte';
   import { classifySport } from './api';
   import { createImageSource, resizeImage } from './utils';
 
-  let buttonRef;
+  let predictButton;
+
+  let takePhotoButton;
+  let takingPhoto;
 
   let imageFile;
   let imageBlob;
@@ -20,10 +24,10 @@
         imageBlob = blob
       })
       .then(() => tick()) // allow SportsSelect to render
-      .then(() => {
-        const selectInput = document.querySelector('.sports-select input');
-        selectInput?.focus();
-      })
+      // .then(() => {
+      //   const selectInput = document.querySelector('.sports-select input');
+      //   selectInput?.focus();
+      // })
       .catch((error) => {
         console.log('cannot create image source', error);
       })
@@ -52,13 +56,41 @@
   function onSportSelected(evt) {
     console.log('selected sport', evt.detail);
     expectedSport = evt.detail;
-    buttonRef?.focus();
+    predictButton?.focus();
+  }
+
+  function takePhoto() {
+    imageSrc = null
+    prediction = null
+    takingPhoto = true
+  }
+
+  function onCameraSnapshot({ detail }) {
+    takingPhoto = false
+    prediction = null
+    imageFile = detail.blob
+  }
+
+  function onCameraCancel() {
+    takingPhoto = false
+    prediction = null
   }
 </script>
 
 <Header />
 
+<button
+  bind:this={takePhotoButton}
+  class="vtmn-btn vtmn-btn_variant--secondary vtmn-btn_size--small"
+  on:click={takePhoto}>
+  Take a photo
+</button>
+<span>or</span>
 <ImagePicker label="Select a sport image" on:image-file={onImageFile} />
+
+{#if takingPhoto}
+  <CameraSnapshot on:snapshot={onCameraSnapshot} on:cancel={onCameraCancel}></CameraSnapshot>
+{/if}
 
 {#if imageSrc}
   <img src={imageSrc} alt="Selected" />
@@ -73,11 +105,12 @@
   />
 
   <button
-    bind:this={buttonRef}
+    bind:this={predictButton}
     class="vtmn-btn vtmn-btn_size--small"
     disabled={predicting}
-    on:click={predict}>{predicting ? `Analyzing...` : `Let's check!`}</button
-  >
+    on:click={predict}>
+    {predicting ? `Analyzing...` : `Let's check!`}
+  </button>
 {/if}
 
 {#if prediction}
