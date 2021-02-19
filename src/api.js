@@ -4,8 +4,12 @@ const baseUrl = 'https://sport-vision-api.decathlon.com/v2'
 
 const apiKey = `${import.meta.env.VITE_DECATHLON_API_KEY}`
 
-export const getSports = async () => {
-  const response = await fetch('https://sports.api.decathlon.com/sports')
+export const getSports = async (options = {}) => {
+  const searchParams = new URLSearchParams({
+    parents_only: true,
+    ...options.searchParams
+  })
+  const response = await fetch(`https://sports.api.decathlon.com/sports?${searchParams.toString()}`)
 
   if (response.ok) {
     return await response.json()
