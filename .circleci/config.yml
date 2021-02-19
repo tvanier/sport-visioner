@@ -1,20 +1,29 @@
 version: 2.1
 
-orbs:
-  node: circleci/node@4.1.0
-
 jobs:
   lint:
-    executor: node/default
+    docker:
+      - image: cimg/node:14.15
     steps:
       - checkout
-      - node/install-packages:
-          cache-path: ~/project/node_modules
-          override-ci-command: npm install
+      - run: |
+          node --version
+          npm --version
+      - run: npm install
       - run: npm run lint
-
+  test:
+    docker:
+      - image: cimg/node:14.15
+    steps:
+      - checkout
+      - run: |
+          node --version
+          npm --version
+      - run: npm install
+      - run: npm run test
 
 workflows:
-  build-deploy:
+  lint-and-test:
     jobs:
       - lint
+      - test
