@@ -1,9 +1,9 @@
 # Sport Visioner
 A sample sport-detection application based on the [Sport Vision API](https://developers.decathlon.com/products/sport-vision) from [Decathlon](https://www.decathlon.com/).
 
-The application allows the user to pick a local image, and predict what sport(s) are included in the picture. The user can optionally pre-select a sport to try to match the algorithm prediction.
+The application allows the user to take a photo or pick a local image, and predict what sport(s) are included in the picture. The user can optionally pre-select a sport to try to match the algorithm prediction.
 
-![Application screenshot](app.png)
+![Application screenshot](public/img/app.png)
 
 # Development
 First you will need [Node.js](https://nodejs.org/) (latest LTS version recommended, v14 at time of writing).
