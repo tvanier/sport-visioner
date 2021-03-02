@@ -1,3 +1,6 @@
+import 'typeface-roboto'
+import 'typeface-roboto-condensed'
+import '@vtmn/css-button'
 import './style.css'
 import App from './src/app.svelte'
 

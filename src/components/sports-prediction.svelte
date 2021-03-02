@@ -19,10 +19,35 @@
       message = `This image shows ${predictedSport.name}`;
     }
   }
+
+  export let details = false;
+  function toggleDetails() {
+    details = !details;
+  }
 </script>
 
-<p data-testid="message">{message}</p>
+<style>
+  p, button {
+    margin: 0;
+  }
+  .vtmn-btn_variant--ghost {
+    min-width: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
 
+  .vtmn-btn_variant--ghost:focus {
+    box-shadow: none;
+  }
+</style>
+
+<div>
+  <p data-testid="message">{message}</p>
+  <button class="vtmn-btn vtmn-btn_variant--ghost vtmn-btn_size--small" on:click={toggleDetails}>
+    {(details ? 'hide' : 'show') + ' details'}
+  </button>
+</div>
+{#if details}
 <small data-testid="small-text">Found {prediction?.sport?.length ?? 0} sports</small>
 <ul>
   {#each prediction?.sport ?? [] as sport}
@@ -31,3 +56,4 @@
     </li>
   {/each}
 </ul>
+{/if}

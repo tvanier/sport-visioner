@@ -27,7 +27,10 @@
     "vite": "2.0.4"
   },
   "dependencies": {
-    "@vtmn/css": "0.1.9"
+    "@vtmn/css-button": "0.1.7",
+    "@vtmn/css-design-tokens": "0.0.13",
+    "typeface-roboto": "1.1.13",
+    "typeface-roboto-condensed": "1.1.13"
   },
   "standard": {
     "globals": [

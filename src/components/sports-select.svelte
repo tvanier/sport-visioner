@@ -47,7 +47,7 @@
 </script>
 
 <Select
-  containerClasses="sports-select"
+  containerStyles={'max-width: 300px'}
   items={sports}
   getOptionLabel={getOptionLabel}
   {placeholder}

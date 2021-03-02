@@ -21,10 +21,16 @@
   }
 </script>
 
+<style>
+  label:hover {
+    cursor: pointer;
+  }
+</style>
+
 <button
   class="vtmn-btn vtmn-btn_variant--secondary vtmn-btn_size--small"
 >
-  <label class="btn-label">
+  <label>
     {label}
     <input type="file" accept=".jpg, .jpeg, .png"
       on:change={onInputChange}

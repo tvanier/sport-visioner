@@ -6,7 +6,11 @@ import SportsPrediction from './sports-prediction'
 
 describe('sport-prediction', () => {
   it('should contain the default message', () => {
-    const { getByTestId } = render(SportsPrediction)
+    const { getByTestId } = render(SportsPrediction, {
+      props: {
+        details: true
+      }
+    })
 
     expect(getByTestId('message').textContent).toEqual('This image shows unknown')
     expect(getByTestId('small-text').textContent).toEqual('Found 0 sports')
@@ -21,7 +25,8 @@ describe('sport-prediction', () => {
     const { getByTestId } = render(SportsPrediction, {
       props: {
         prediction,
-        expected: {}
+        expected: {},
+        details: true
       }
     })
 
@@ -40,7 +45,8 @@ describe('sport-prediction', () => {
     const { getByTestId } = render(SportsPrediction, {
       props: {
         prediction,
-        expected: { id: 1 }
+        expected: { id: 1 },
+        details: true
       }
     })
 
@@ -61,7 +67,8 @@ describe('sport-prediction', () => {
 
     const { getByText } = render(SportsPrediction, {
       props: {
-        prediction
+        prediction,
+        details: true
       }
     })
 

@@ -23,11 +23,6 @@
         imageSrc = dataURL
         imageBlob = blob
       })
-      .then(() => tick()) // allow SportsSelect to render
-      // .then(() => {
-      //   const selectInput = document.querySelector('.sports-select input');
-      //   selectInput?.focus();
-      // })
       .catch((error) => {
         console.log('cannot create image source', error);
       })
@@ -77,16 +72,28 @@
   }
 </script>
 
+<style>
+  .initial-actions > button {
+    margin: 3px 0;
+  }
+  img {
+    max-width: 100%;
+  }
+</style>
+
 <Header />
 
-<button
-  bind:this={takePhotoButton}
-  class="vtmn-btn vtmn-btn_variant--secondary vtmn-btn_size--small"
-  on:click={takePhoto}>
-  Take a photo
-</button>
-<span>or</span>
-<ImagePicker label="Select a sport image" on:image-file={onImageFile} />
+<div class="initial-actions">
+  <p>Take a photo or pick a local image, and let the visioner predict what sport(s) are included in the picture.</p>
+  <button
+    bind:this={takePhotoButton}
+    class="vtmn-btn vtmn-btn_variant--secondary vtmn-btn_size--small"
+    on:click={takePhoto}>
+    Take a photo
+  </button>
+  <span>or</span>
+  <ImagePicker label="Select a sport image" on:image-file={onImageFile} />
+</div>
 
 {#if takingPhoto}
   <CameraSnapshot on:snapshot={onCameraSnapshot} on:cancel={onCameraCancel}></CameraSnapshot>
@@ -95,7 +102,7 @@
 {#if imageSrc}
   <img src={imageSrc} alt="Selected" />
 
-  <p>Optionally, pre-select a sport to try to match the algorithm prediction</p>
+  <p>Optionally, pre-select a sport to try to match the visioner's prediction</p>
   <SportsSelect
     class="sports-select"
     isDisabled={predicting}
