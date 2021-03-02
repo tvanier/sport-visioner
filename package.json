@@ -27,7 +27,7 @@
     "vite": "2.0.4"
   },
   "dependencies": {
-    "@vtmn/css": "0.1.7"
+    "@vtmn/css": "0.1.9"
   },
   "standard": {
     "globals": [
