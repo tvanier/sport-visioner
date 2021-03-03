@@ -22,6 +22,7 @@
       .then(({ dataURL, blob }) => {
         imageSrc = dataURL
         imageBlob = blob
+        takingPhoto = false
       })
       .catch((error) => {
         console.log('cannot create image source', error);
@@ -37,12 +38,22 @@
     prediction = null;
   }
 
+  function reset() {
+    imageFile = null;
+    imageBlob = null;
+    imageSrc = null;
+    takingPhoto = false;
+    prediction = null;
+  }
+
   async function predict() {
     predicting = true;
     try {
       prediction = null;
       const { data } = await classifySport(imageBlob);
-      prediction = data;
+      if (imageFile) {
+        prediction = data;
+      }
     } finally {
       predicting = false;
     }
@@ -61,7 +72,6 @@
   }
 
   function onCameraSnapshot({ detail }) {
-    takingPhoto = false
     prediction = null
     imageFile = detail.blob
   }
@@ -83,6 +93,7 @@
 
 <Header />
 
+{#if !takingPhoto && !imageSrc}
 <div class="initial-actions">
   <p>Take a photo or pick a local image, and let the visioner predict what sport(s) are included in the picture.</p>
   <button
@@ -94,8 +105,7 @@
   <span>or</span>
   <ImagePicker label="Select a sport image" on:image-file={onImageFile} />
 </div>
-
-{#if takingPhoto}
+{:else if takingPhoto}
   <CameraSnapshot on:snapshot={onCameraSnapshot} on:cancel={onCameraCancel}></CameraSnapshot>
 {/if}
 
@@ -116,8 +126,14 @@
     class="vtmn-btn vtmn-btn_size--small"
     disabled={predicting}
     on:click={predict}>
-    {predicting ? `Analyzing...` : `Let's check!`}
+    {predicting ? `Analyzing...` : `Let's find sports!`}
   </button>
+  <button
+    class="vtmn-btn vtmn-btn_variant--secondary vtmn-btn_size--small"
+    on:click={reset}>
+    Try another image
+  </button>
+
 {/if}
 
 {#if prediction}

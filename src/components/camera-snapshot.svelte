@@ -7,6 +7,8 @@
   let video;
   const canvas = document.createElement('canvas');
 
+  let gotUserMedia = false;
+
   onMount(startCamera)
 
   async function startCamera(deviceId) {
@@ -20,6 +22,7 @@
     try {
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
       video.srcObject = stream;
+      gotUserMedia = true;
     } catch (error) {
       console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
     }
@@ -71,7 +74,9 @@
 <!-- svelte-ignore a11y-media-has-caption -->
 <video playsinline autoplay bind:this={video}></video>
 
+{#if gotUserMedia}
 <CameraSelect on:select={onCameraSelect}></CameraSelect>
+{/if}
 
 <button
   class="vtmn-btn vtmn-btn_variant--secondary vtmn-btn_size--small"
