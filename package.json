@@ -22,7 +22,7 @@
     "rollup-plugin-svelte": "7.1.0",
     "standard": "16.0.3",
     "svelte": "3.37.0",
-    "svelte-jester": "1.4.0",
+    "svelte-jester": "1.5.0",
     "svelte-select": "3.17.0",
     "vite": "2.2.4"
   },
