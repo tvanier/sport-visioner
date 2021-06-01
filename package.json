@@ -50,6 +50,7 @@
       "@testing-library/jest-dom/extend-expect",
       "jest-svelte-events/extend-expect"
     ],
+    "testEnvironment": "jsdom",
     "testEnvironmentOptions": {
       "resources": "usable"
     }
