@@ -16,7 +16,7 @@
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/svelte": "3.0.3",
     "canvas": "2.8.0",
-    "eslint": "7.28.0",
+    "eslint": "7.29.0",
     "jest": "27.0.4",
     "jest-svelte-events": "1.0.5",
     "rollup-plugin-svelte": "7.1.0",
