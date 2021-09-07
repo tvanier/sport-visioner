@@ -12,7 +12,7 @@
     "serve": "vite preview"
   },
   "devDependencies": {
-    "@babel/preset-env": "7.15.0",
+    "@babel/preset-env": "7.15.4",
     "@testing-library/jest-dom": "5.14.1",
     "@testing-library/svelte": "3.0.3",
     "canvas": "2.8.0",
@@ -27,7 +27,7 @@
     "vite": "2.5.1"
   },
   "dependencies": {
-    "@vtmn/css-button": "0.4.8",
+    "@vtmn/css-button": "0.4.9",
     "@vtmn/css-design-tokens": "0.4.2",
     "typeface-roboto": "1.1.13",
     "typeface-roboto-condensed": "1.1.13"
