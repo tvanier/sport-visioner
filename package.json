@@ -23,7 +23,7 @@
     "standard": "16.0.3",
     "svelte": "3.42.5",
     "svelte-jester": "1.6.0",
-    "svelte-select": "3.17.0",
+    "svelte-select": "4.4.1",
     "vite": "2.5.7"
   },
   "dependencies": {
