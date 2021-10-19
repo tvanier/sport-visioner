@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@vtmn/css-button": "0.6.6",
-    "@vtmn/css-design-tokens": "0.8.3",
+    "@vtmn/css-design-tokens": "0.8.5",
     "typeface-roboto": "1.1.13",
     "typeface-roboto-condensed": "1.1.13"
   },
