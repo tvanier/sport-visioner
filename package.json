@@ -17,7 +17,7 @@
     "@testing-library/svelte": "3.0.3",
     "canvas": "2.8.0",
     "eslint": "7.32.0",
-    "jest": "27.2.5",
+    "jest": "27.3.1",
     "jest-svelte-events": "1.0.5",
     "rollup-plugin-svelte": "7.1.0",
     "standard": "16.0.4",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@vtmn/css-button": "0.6.8",
-    "@vtmn/css-design-tokens": "0.8.5",
+    "@vtmn/css-design-tokens": "0.8.6",
     "typeface-roboto": "1.1.13",
     "typeface-roboto-condensed": "1.1.13"
   },
