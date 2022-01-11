@@ -21,14 +21,14 @@
     "jest-svelte-events": "1.0.5",
     "rollup-plugin-svelte": "7.1.0",
     "standard": "16.0.4",
-    "svelte": "3.44.3",
+    "svelte": "3.45.0",
     "svelte-jester": "1.6.0",
     "svelte-select": "3.17.0",
     "vite": "2.7.10"
   },
   "dependencies": {
     "@vtmn/css-button": "0.8.11",
-    "@vtmn/css-design-tokens": "0.10.2",
+    "@vtmn/css-design-tokens": "0.12.0",
     "typeface-roboto": "1.1.13",
     "typeface-roboto-condensed": "1.1.13"
   },
