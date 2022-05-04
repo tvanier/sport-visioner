@@ -20,7 +20,7 @@
     "jest": "27.5.1",
     "jest-svelte-events": "1.0.5",
     "rollup-plugin-svelte": "7.1.0",
-    "standard": "16.0.4",
+    "standard": "17.0.0",
     "svelte": "3.48.0",
     "svelte-jester": "1.6.0",
     "svelte-select": "3.17.0",
