@@ -25,7 +25,7 @@
     "svelte": "3.59.1",
     "svelte-jester": "2.3.2",
     "svelte-select": "5.6.1",
-    "vite": "4.3.6"
+    "vite": "4.3.8"
   },
   "dependencies": {
     "@vtmn/css-button": "1.1.1",
