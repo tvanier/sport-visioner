@@ -39,6 +39,9 @@
     ]
   },
   "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!(@testing-library/svelte)/)"
+    ],
     "transform": {
       "^.+\\.js$": "babel-jest",
       "^.+\\.svelte$": "svelte-jester"
