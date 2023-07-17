@@ -12,7 +12,7 @@
     "serve": "vite preview"
   },
   "devDependencies": {
-    "@babel/preset-env": "7.22.7",
+    "@babel/preset-env": "7.22.9",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/svelte": "4.0.3",
     "canvas": "2.11.2",
