@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/svelte'
 
 import ImagePicker from './image-picker.svelte'
 
-describe.only('image-picker', () => {
+describe('image-picker', () => {
   it('should contain the correct label', () => {
     const { getByText, unmount } = render(ImagePicker)
 
