@@ -1,12 +1,12 @@
-/* global describe, it, expect */
+import { describe, it, expect } from 'vitest'
 
 import { render } from '@testing-library/svelte'
 
-import SportsPrediction from './sports-prediction'
+import SportsPrediction from './sports-prediction.svelte'
 
 describe('sport-prediction', () => {
   it('should contain the default message', () => {
-    const { getByTestId } = render(SportsPrediction, {
+    const { getByTestId, unmount } = render(SportsPrediction, {
       props: {
         details: true
       }
@@ -14,6 +14,7 @@ describe('sport-prediction', () => {
 
     expect(getByTestId('message').textContent).toEqual('This image shows unknown')
     expect(getByTestId('small-text').textContent).toEqual('Found 0 sports')
+    unmount()
   })
 
   it('should contain the message for prediction not matching expected', () => {
@@ -22,7 +23,7 @@ describe('sport-prediction', () => {
         { id: 789, name: 'tennis', probability: 0.12345 }
       ]
     }
-    const { getByTestId } = render(SportsPrediction, {
+    const { getByTestId, unmount } = render(SportsPrediction, {
       props: {
         prediction,
         expected: {},
@@ -34,6 +35,7 @@ describe('sport-prediction', () => {
       'Oops, looks like this image shows tennis at 12.35%'
     )
     expect(getByTestId('small-text').textContent).toEqual('Found 1 sports')
+    unmount()
   })
 
   it('should contain the message for prediction matching expected', () => {
@@ -42,7 +44,7 @@ describe('sport-prediction', () => {
         { id: 1, name: 'tennis', probability: 0.12345 }
       ]
     }
-    const { getByTestId } = render(SportsPrediction, {
+    const { getByTestId, unmount } = render(SportsPrediction, {
       props: {
         prediction,
         expected: { id: 1 },
@@ -54,6 +56,7 @@ describe('sport-prediction', () => {
       'Correct! This image shows tennis'
     )
     expect(getByTestId('small-text').textContent).toEqual('Found 1 sports')
+    unmount()
   })
 
   it('should contain the message for each sport found', () => {
@@ -65,15 +68,17 @@ describe('sport-prediction', () => {
       ]
     }
 
-    const { getByText } = render(SportsPrediction, {
+    const { getByText, unmount } = render(SportsPrediction, {
       props: {
         prediction,
         details: true
       }
     })
 
-    expect(getByText('tennis at 12.35%')).toBeInTheDocument()
-    expect(getByText('soccer at 5.68%')).toBeInTheDocument()
-    expect(getByText('basketball at 82.12%')).toBeInTheDocument()
+    expect(getByText('tennis at 12.35%')).toBeDefined()
+    expect(getByText('soccer at 5.68%')).toBeDefined()
+    expect(getByText('basketball at 82.12%')).toBeDefined()
+
+    unmount()
   })
 })

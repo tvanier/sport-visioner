@@ -26,13 +26,7 @@ Available npm commands:
 - `npm run build` to bundle for production
 
 ## Testing
-Unit tests are written with [Testing Library](https://testing-library.com/) and [Jest](https://jestjs.io/).
+Unit tests are written with [Testing Library](https://testing-library.com/) and [Vitest](https://vitest.dev/).
 
-Jest and JSDOM have some limitations with ESM modules, which can cause compatibility issues with Vite, like [import.meta](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import.meta).<br>
-A possible alternative would be to replace Jest with [Mocha](https://mochajs.org/) and [esm](https://www.npmjs.com/package/esm) and run
-```
-mocha --require esm src/**/*.spec.js
-```
-However, this would need a utility to load Svelte components in Node, such as [svelte-test-register](https://github.com/dirv/svelte-test-register)
 # License
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for more information.
