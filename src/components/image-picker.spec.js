@@ -1,20 +1,24 @@
-/* global describe, it, expect, listen, File */
-
+/* global File */
+import { describe, it, expect, vi } from 'vitest'
 import { render, fireEvent } from '@testing-library/svelte'
 
-import ImagePicker from './image-picker'
+import ImagePicker from './image-picker.svelte'
 
-describe('image-picker', () => {
+describe.only('image-picker', () => {
   it('should contain the correct label', () => {
-    const { getByText } = render(ImagePicker)
+    const { getByText, unmount } = render(ImagePicker)
 
-    expect(getByText('Select an image')).toBeInTheDocument()
+    expect(getByText('Select an image')).toBeDefined()
+
+    unmount()
   })
 
   it('should dispatch image-file on input change', async () => {
-    const { component, getByTestId } = render(ImagePicker)
+    const { component, getByTestId, unmount } = render(ImagePicker)
     const file = new File([''], 'image.png', { type: 'image/png' })
-    listen(component, 'image-file')
+
+    const eventHandler = vi.fn()
+    component.$on('image-file', eventHandler)
 
     const input = getByTestId('input')
     await fireEvent.change(input, {
@@ -23,14 +27,19 @@ describe('image-picker', () => {
       }
     })
 
-    expect(component).toHaveFiredEventTimes('image-file', 1)
-    expect(component).toHaveFiredEventWith('image-file', { image: file })
+    expect(eventHandler).toHaveBeenCalledTimes(1)
+    const event = eventHandler.mock.calls[0][0]
+    expect(event.detail).toEqual({ image: file })
+
+    unmount()
   })
 
   it('should not dispatch image-file on input change if not image', async () => {
-    const { component, getByTestId } = render(ImagePicker)
+    const { component, getByTestId, unmount } = render(ImagePicker)
     const file = new File([''], 'file.html', { type: 'text/html' })
-    listen(component, 'image-file')
+
+    const eventHandler = vi.fn()
+    component.$on('image-file', eventHandler)
 
     const input = getByTestId('input')
     await fireEvent.change(input, {
@@ -39,6 +48,7 @@ describe('image-picker', () => {
       }
     })
 
-    expect(component).toHaveFiredEventTimes('image-file', 0)
+    expect(eventHandler).not.toHaveBeenCalled()
+    unmount()
   })
 })

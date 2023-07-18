@@ -1,7 +1,5 @@
-/* global jest, describe, it, expect, beforeAll, afterAll, beforeEach */
+import { describe, it, expect, beforeAll, afterAll, beforeEach, vi } from 'vitest'
 
-// current jest does not support import.meta
-// https://github.com/facebook/jest/issues/4842
 // import { getSports } from './api'
 // mocking getSports here to illustrate tests below
 const getSports = async () => {
@@ -34,10 +32,10 @@ describe('api', () => {
   let response
 
   beforeEach(() => {
-    fetchSpy = jest.spyOn(window, 'fetch')
+    fetchSpy = vi.spyOn(window, 'fetch')
 
     response = {
-      json: jest.fn()
+      json: vi.fn()
     }
     fetchSpy.mockResolvedValue(response)
   })

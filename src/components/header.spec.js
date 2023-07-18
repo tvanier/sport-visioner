@@ -1,13 +1,14 @@
-/* global describe, it, expect */
-
+import { describe, it, expect } from 'vitest'
 import { render } from '@testing-library/svelte'
 
-import Header from './header'
+import Header from './header.svelte'
 
 describe('header', () => {
   it('should contain the correct title', () => {
-    const { getByText } = render(Header)
+    const { getByText, unmount } = render(Header)
 
-    expect(getByText('Sport Visioner')).toBeInTheDocument()
+    expect(getByText('Sport Visioner')).toBeDefined()
+
+    unmount()
   })
 })
