@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "2.4.6",
-    "@testing-library/svelte": "4.0.4",
+    "@testing-library/svelte": "4.0.5",
     "canvas": "2.11.2",
     "eslint": "8.52.0",
     "jsdom": "22.1.0",
