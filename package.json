@@ -16,7 +16,7 @@
     "@sveltejs/vite-plugin-svelte": "2.4.6",
     "@testing-library/svelte": "4.0.4",
     "canvas": "2.11.2",
-    "eslint": "8.52.0",
+    "eslint": "8.53.0",
     "jsdom": "22.1.0",
     "standard": "17.1.0",
     "svelte": "4.2.2",
