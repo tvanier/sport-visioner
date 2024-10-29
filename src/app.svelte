@@ -50,7 +50,7 @@
     predicting = true;
     try {
       prediction = null;
-      const { data } = await classifySport(imageBlob);
+      const { data } = (await classifySport(imageBlob)) ?? {};
       if (imageFile) {
         prediction = data;
       }

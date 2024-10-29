@@ -43,7 +43,7 @@
 
 <div>
   <p data-testid="message">{message}</p>
-  <button class="vtmn-btn vtmn-btn_variant--ghost vtmn-btn_size--small" on:click={toggleDetails}>
+  <button class="vtmn-btn vtmn-btn_variant--ghost vtmn-btn_size--small" onclick={toggleDetails}>
     {(details ? 'hide' : 'show') + ' details'}
   </button>
 </div>

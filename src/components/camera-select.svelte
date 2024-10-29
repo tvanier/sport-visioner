@@ -35,7 +35,7 @@
 </style>
 
 <!-- svelte-ignore a11y-no-onchange -->
-<select bind:value on:change={onChange}>
+<select bind:value onchange={onChange}>
   {#each cameras as camera}
   <option value={camera}>{camera.label}</option>
   {/each}
