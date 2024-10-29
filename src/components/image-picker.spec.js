@@ -14,12 +14,10 @@ describe('image-picker', () => {
   })
 
   it('should dispatch image-file on input change', async () => {
-    const { component, getByTestId, unmount } = render(ImagePicker)
     const file = new File([''], 'image.png', { type: 'image/png' })
 
     const eventHandler = vi.fn()
-    component.$on('image-file', eventHandler)
-
+    const { getByTestId, unmount } = render(ImagePicker, { events: { 'image-file': eventHandler } })
     const input = getByTestId('input')
     await fireEvent.change(input, {
       target: {
@@ -35,11 +33,10 @@ describe('image-picker', () => {
   })
 
   it('should not dispatch image-file on input change if not image', async () => {
-    const { component, getByTestId, unmount } = render(ImagePicker)
     const file = new File([''], 'file.html', { type: 'text/html' })
 
     const eventHandler = vi.fn()
-    component.$on('image-file', eventHandler)
+    const { getByTestId, unmount } = render(ImagePicker, { events: { 'image-file': eventHandler } })
 
     const input = getByTestId('input')
     await fireEvent.change(input, {

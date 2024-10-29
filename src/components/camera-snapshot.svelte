@@ -75,17 +75,17 @@
 <video playsinline autoplay bind:this={video}></video>
 
 {#if gotUserMedia}
-<CameraSelect on:select={onCameraSelect}></CameraSelect>
+<CameraSelect onselect={onCameraSelect}></CameraSelect>
 {/if}
 
 <button
   class="vtmn-btn vtmn-btn_variant--secondary vtmn-btn_size--small"
-  on:click={takeSnapshot}>
+  onclick={takeSnapshot}>
   Take snapshot
 </button>
 
 <button
   class="vtmn-btn vtmn-btn_variant--ghost vtmn-btn_size--small"
-  on:click={cancel}>
+  onclick={cancel}>
   Cancel
 </button>

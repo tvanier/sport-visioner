@@ -51,6 +51,6 @@
   items={sports}
   getOptionLabel={getOptionLabel}
   {placeholder}
-  on:select={onSelect}
-  on:clear
+  onselect={onSelect}
+  onclear
 />

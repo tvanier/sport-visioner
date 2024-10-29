@@ -33,7 +33,7 @@
   <label>
     {label}
     <input type="file" accept=".jpg, .jpeg, .png"
-      on:change={onInputChange}
+      onchange={onInputChange}
       data-testid="input" style="display: none;" />
   </label>
 </button>
