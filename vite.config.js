@@ -8,9 +8,8 @@ export default defineConfig(({ mode }) => ({
       emitCss: false
     })
   ],
-  // https://github.com/sveltejs/svelte/issues/11394
   resolve: {
-    conditions: mode === 'test' ? ['browser'] : []
+    conditions: ['browser'],
   },
   test: {
     setupFiles: ['./vitest.setup.ts'],
