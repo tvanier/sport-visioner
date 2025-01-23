@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => ({
     })
   ],
   resolve: {
-    conditions: ['browser'],
+    conditions: ['browser']
   },
   test: {
     setupFiles: ['./vitest.setup.ts'],
