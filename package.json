@@ -22,7 +22,7 @@
     "svelte": "5.33.18",
     "svelte-select": "5.8.3",
     "vite": "6.3.5",
-    "vitest": "3.2.0",
+    "vitest": "3.2.3",
     "vitest-canvas-mock": "0.3.3"
   },
   "dependencies": {
