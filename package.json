@@ -19,7 +19,7 @@
     "eslint": "9.38.0",
     "jsdom": "27.0.1",
     "standard": "17.1.2",
-    "svelte": "5.41.1",
+    "svelte": "5.42.2",
     "svelte-select": "5.8.3",
     "vite": "7.1.12",
     "vitest": "3.2.4",
