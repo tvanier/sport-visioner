@@ -17,7 +17,7 @@
     "@testing-library/svelte": "5.2.8",
     "canvas": "3.2.0",
     "eslint": "9.38.0",
-    "jsdom": "27.0.1",
+    "jsdom": "27.1.0",
     "standard": "17.1.2",
     "svelte": "5.42.2",
     "svelte-select": "5.8.3",
